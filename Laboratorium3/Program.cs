@@ -10,6 +10,7 @@ namespace Laboratorium3
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            //builder.Services.addDbContext<AppDbContext>();
             builder.Services.AddSingleton<IPhotoService, MemoryPhotoServices>();
             var app = builder.Build();
 

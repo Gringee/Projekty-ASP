@@ -14,7 +14,7 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"d:\contacts.db");
+            optionsBuilder.UseSqlite(@"data source = d:\contacts.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
