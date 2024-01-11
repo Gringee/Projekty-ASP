@@ -17,5 +17,8 @@ namespace Laboratorium3.Models
         public string Autor { get; set; }
         public string Resolution { get; set; }
         public string Format { get; set; }
+
+        [Display(Name = "Priorytet")]
+        public Priority Priority { get; set; }
     }
 }

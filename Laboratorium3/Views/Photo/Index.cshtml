@@ -6,69 +6,68 @@
 }
 <h1>Spis Zdjęć</h1>
 <a class="btn btn-primary" asp-controller="Photo" asp-action="Create">Dodaj zdjęcie</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Data i godzina
-            </th>
-            <th>
-                Opis
-            </th>
-            <th>
-                Aparat
-            </th>
-            <th>
-                Autor
-            </th>
-            <th>
-                Rozdzielczość
-            </th>
-            <th>
-                Format
-            </th>
-           
-        </tr>
-    </thead>
-    <tbody>
-       @foreach (Photo item in @Model)
-        {
-            /*int liczba_zdjęć = item.Spis_piosenek.Count();
-            var sumaCzasu = TimeSpan.Zero;
-            foreach(var piosenka in item.Czas_trwania)
-            {
-                sumaCzasu = sumaCzasu.Add(piosenka);
-            }*/
-
+@if (Model != null && Model.Count > 0){
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @item.Data.ToString()
-                </td>
-                <td>
-                    @item.Opis
-                </td>
-                <td>
-                    @item.Aparat
-                   
-                </td>
-                <td>
-                    @item.Autor
-                </td>
-                <td>
-                    @item.Resolution
-                </td>
-                <td>
-                    @item.Format
-                </td>
-
-                <td>
-                    <a asp-action="Update" asp-route-id="@item.Id">Edytuj</a>
-                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
-
-
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Data)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Opis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Aparat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Resolution)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Format)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model[0].Priority)
+                </th>
+                <th>
+                    Akcje
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (Photo item in @Model)
+            {
+                <tr>
+                    <td>
+                        @item.Data
+                    </td>
+                    <td>
+                        @item.Opis
+                    </td>
+                    <td>
+                        @item.Aparat
+                    </td>
+                    <td>
+                        @item.Autor
+                    </td>
+                    <td>
+                        @item.Resolution
+                    </td>
+                    <td>
+                        @item.Format
+                    </td>
+                    <td>
+                        @item.Priority.GetDisplayName()
+                    </td>
+                    <td>
+                        <a asp-action="Update" asp-route-id=@item.Id>Edytuj</a>
+                        <a asp-action="Details" asp-route-id=@item.Id>Szczegóły</a>
+                        <a asp-action="Delete" asp-route-id=@item.Id>Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
